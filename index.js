@@ -130,7 +130,6 @@ var PSR = function () {
   }, {
     key: "iterate",
     value: function iterate(answers) {
-      console.log(answers);
       var answers = answers || {};
       var that = this;
 

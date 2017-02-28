@@ -140,7 +140,6 @@ class PSR
 
   iterate(answers)
   {
-    console.log(answers);
     var answers = answers ||
     {};
     var that = this;
