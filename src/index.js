@@ -291,45 +291,43 @@ function findAllConditionsHelper(codes)
   
   Object.keys(codes).map(c => codes[c]).filter(tree => tree.except || tree.condition || tree.from).forEach(tree =>
   {
-    let list = output[tree.code] || (output[tree.code] = []);
+    let list = output[tree.code] || [];
     if (tree.from)
     {
       list.push(`provided that it is a change from ${hslistToText(tree.from)}`);
     }
     if (tree.except)
     {
-      let excepts = [tree.except];
-      while (excepts.length > 0)
-      {
-        let except = excepts.splice(0, 1)[0];
-        if (except.list)
-        {
-          excepts = excepts.concat(except.list);
-        }
-        else
-        {
-          list.push(`provided that it is not a change from ${hslistToText(except)}`);
-        }
-      }
+      list = list.concat(hslistToConditions(tree.except));
     }
     if (tree.condition)
     {
       tree.condition.forEach(cond => list.push(cond));
     }
+    output[tree.code] = list
   });
   
   return output;
 }
 
-function hslistToText(except, i, l)
+function hslistToConditions(except)
+{
+  if (except.list)
+  {
+    return hslistToConditions(except.list[0])
+      .concat(hslistToConditions(except.list[1]));
+  }
+  return [`provided that it is not a change from ${hslistToText(except)}`];
+}
+
+function hslistToText(except, index, list)
 {
   if (except.range)
   {
     return except.range.map(hslistToText)
       .join(' through to ');
   }
-
-  if (except.list)
+  else if (except.list)
   {
     return except.list.map(hslistToText)
       .join(', ');
@@ -337,7 +335,7 @@ function hslistToText(except, i, l)
 
   let printMaterial = true;
 
-  if (i && l && l[i - 1].material === except.material)
+  if (index && list && list[index - 1].material === except.material)
   {
     printMaterial = false;
   }
