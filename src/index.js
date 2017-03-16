@@ -122,7 +122,7 @@ class PSR
           that.friendlyGroupingException, category.itemIf, category, vars)
         .replace(/\s+/g, ' ')
         .replace(/(^[ ]|[ ]$)/g, '')
-        .replace(/^(or|and| )*|(or|and| )*$/g, '');
+        .replace(/^(or |and | )*|( or| and| )*$/g, '');
       if (vars.friendlyRules)
       {
         category.friendlyRules = vars.friendlyRules = template(vars.friendlyRules, vars);
