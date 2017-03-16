@@ -74,12 +74,12 @@
   }
 */
 var parser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,3],$V1=[1,4],$V2=[1,5],$V3=[1,7],$V4=[1,8],$V5=[1,9],$V6=[1,10],$V7=[1,11],$V8=[1,12],$V9=[1,13],$Va=[1,14],$Vb=[1,15],$Vc=[5,7,8,9,11,14,15,16,17,18,20],$Vd=[1,27],$Ve=[1,26],$Vf=[5,7,8,9,11,14,15,16,17,18,20,21];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,3],$V1=[1,4],$V2=[1,5],$V3=[1,7],$V4=[1,8],$V5=[1,9],$V6=[1,10],$V7=[1,11],$V8=[1,12],$V9=[1,13],$Va=[1,14],$Vb=[1,15],$Vc=[1,16],$Vd=[5,7,8,9,11,14,15,16,17,18,20,21],$Ve=[1,27],$Vf=[1,32],$Vg=[1,33],$Vh=[1,34],$Vi=[1,35],$Vj=[5,7,8,9,11,14,15,16,17,18,20,21,22,23,25,26];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"e":4,"EOF":5,"(":6,")":7,"and":8,"or":9,"silent":10,"friendly":11,"CODE":12,"TEXT":13,"parameter":14,"text":15,"condition":16,"label":17,"except":18,"exc":19,"details":20,",":21,"MATERIAL":22,"-":23,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",6:"(",7:")",8:"and",9:"or",10:"silent",11:"friendly",12:"CODE",13:"TEXT",14:"parameter",15:"text",16:"condition",17:"label",18:"except",20:"details",21:",",22:"MATERIAL",23:"-"},
-productions_: [0,[3,2],[4,3],[4,3],[4,3],[4,2],[4,4],[4,1],[4,3],[4,3],[4,3],[4,3],[4,3],[4,3],[19,3],[19,2],[19,1],[19,3]],
+symbols_: {"error":2,"expressions":3,"e":4,"EOF":5,"(":6,")":7,"and":8,"or":9,"silent":10,"friendly":11,"CODE":12,"TEXT":13,"parameter":14,"text":15,"condition":16,"label":17,"from":18,"hslist":19,"except":20,"details":21,",":22,"-":23,"HS":24,"material":25,"extra":26,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",6:"(",7:")",8:"and",9:"or",10:"silent",11:"friendly",12:"CODE",13:"TEXT",14:"parameter",15:"text",16:"condition",17:"label",18:"from",20:"except",21:"details",22:",",23:"-",24:"HS",25:"material",26:"extra"},
+productions_: [0,[3,2],[4,3],[4,3],[4,3],[4,2],[4,4],[4,1],[4,3],[4,3],[4,3],[4,3],[4,3],[4,3],[4,3],[19,3],[19,3],[19,1],[19,3],[19,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -103,30 +103,27 @@ break;
 case 6:
 this.$ = $$[$0-3]; this.$.friendly = this.$.friendly || {}; this.$.friendly[$$[$0-1]] = $$[$0].substr(1, $$[$0].length - 2);
 break;
-case 7:
+case 7: case 17:
 this.$ = {code: $$[$0]};
 break;
-case 8: case 9: case 10: case 11: case 13:
+case 8: case 9: case 11: case 14: case 18: case 19:
 this.$ = $$[$0-2]; this.$[$$[$0-1]] = $$[$0].substr(1, $$[$0].length - 2);
 break;
-case 12:
+case 10:
+this.$ = $$[$0-2]; this.$[$$[$0-1]] = this.$[$$[$0-1]] || []; this.$[$$[$0-1]].push($$[$0].substr(1, $$[$0].length - 2));
+break;
+case 12: case 13:
 this.$ = $$[$0-2]; this.$[$$[$0-1]] = $$[$0];
 break;
-case 14:
-this.$ = $$[$0-2].concat($$[$0]);
-break;
 case 15:
-this.$ = $$[$0]; this.$[0].materials = $$[$0-1].substr(1, $$[$0-1].length - 2)
+this.$ = {list: [$$[$0-2], $$[$0]]};
 break;
 case 16:
-this.$ = [{code: $$[$0], materials: 'materials'}];
-break;
-case 17:
-this.$ = [{range: [$$[$0-2], $$[$0]], materials: 'materials'}];
+this.$ = {range: [$$[$0-2], $$[$0]]};
 break;
 }
 },
-table: [{3:1,4:2,6:$V0,10:$V1,12:$V2},{1:[3]},{5:[1,6],8:$V3,9:$V4,11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb},{4:16,6:$V0,10:$V1,12:$V2},{4:17,6:$V0,10:$V1,12:$V2},o($Vc,[2,7]),{1:[2,1]},{4:18,6:$V0,10:$V1,12:$V2},{4:19,6:$V0,10:$V1,12:$V2},{12:[1,20]},{13:[1,21]},{13:[1,22]},{13:[1,23]},{13:[1,24]},{12:$Vd,19:25,22:$Ve},{13:[1,28]},{7:[1,29],8:$V3,9:$V4,11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb},o([5,7,8,9,14,15,16,17,18,20],[2,5],{11:$V5}),o([5,7,8,9],[2,3],{11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb}),o([5,7,9],[2,4],{8:$V3,11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb}),{13:[1,30]},o($Vc,[2,8]),o($Vc,[2,9]),o($Vc,[2,10]),o($Vc,[2,11]),o($Vc,[2,12],{21:[1,31]}),{12:$Vd,19:32,22:$Ve},o($Vf,[2,16],{23:[1,33]}),o($Vc,[2,13]),o($Vc,[2,2]),o($Vc,[2,6]),{12:$Vd,19:34,22:$Ve},o($Vf,[2,15]),{12:[1,35]},o($Vf,[2,14]),o($Vf,[2,17])],
+table: [{3:1,4:2,6:$V0,10:$V1,12:$V2},{1:[3]},{5:[1,6],8:$V3,9:$V4,11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb,21:$Vc},{4:17,6:$V0,10:$V1,12:$V2},{4:18,6:$V0,10:$V1,12:$V2},o($Vd,[2,7]),{1:[2,1]},{4:19,6:$V0,10:$V1,12:$V2},{4:20,6:$V0,10:$V1,12:$V2},{12:[1,21]},{13:[1,22]},{13:[1,23]},{13:[1,24]},{13:[1,25]},{19:26,24:$Ve},{19:28,24:$Ve},{13:[1,29]},{7:[1,30],8:$V3,9:$V4,11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb,21:$Vc},o([5,7,8,9,14,15,16,17,18,20,21],[2,5],{11:$V5}),o([5,7,8,9],[2,3],{11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb,21:$Vc}),o([5,7,9],[2,4],{8:$V3,11:$V5,14:$V6,15:$V7,16:$V8,17:$V9,18:$Va,20:$Vb,21:$Vc}),{13:[1,31]},o($Vd,[2,8]),o($Vd,[2,9]),o($Vd,[2,10]),o($Vd,[2,11]),o($Vd,[2,12],{22:$Vf,23:$Vg,25:$Vh,26:$Vi}),o($Vj,[2,17]),o($Vd,[2,13],{22:$Vf,23:$Vg,25:$Vh,26:$Vi}),o($Vd,[2,14]),o($Vd,[2,2]),o($Vd,[2,6]),{19:36,24:$Ve},{19:37,24:$Ve},{13:[1,38]},{13:[1,39]},o([5,7,8,9,11,14,15,16,17,18,20,21,22],[2,15],{23:$Vg,25:$Vh,26:$Vi}),o([5,7,8,9,11,14,15,16,17,18,20,21,22,23],[2,16],{25:$Vh,26:$Vi}),o($Vj,[2,18]),o($Vj,[2,19])],
 defaultActions: {6:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
@@ -609,11 +606,11 @@ case 0:/* skip whitespace */
 break;
 case 1:return 12;
 break;
-case 2:return 13;
+case 2:return 24;
 break;
-case 3:return 22;
+case 3:return 13;
 break;
-case 4:return 21;
+case 4:return 22;
 break;
 case 5:return 23;
 break;
@@ -621,36 +618,42 @@ case 6:return 10
 break;
 case 7:return 14
 break;
-case 8:return 15
+case 8:return 18
 break;
-case 9:return 18
+case 9:return 15
 break;
-case 10:return 16
+case 10:return 20
 break;
-case 11:return 17
+case 11:return 16
 break;
-case 12:return 20
+case 12:return 17
 break;
-case 13:return 11
+case 13:return 21
 break;
-case 14:return 6;
+case 14:return 25
 break;
-case 15:return 7;
+case 15:return 26
 break;
-case 16:return '<';
+case 16:return 11
 break;
-case 17:return '>';
+case 17:return 6;
 break;
-case 18:return 8;
+case 18:return 7;
 break;
-case 19:return 9;
+case 19:return '<';
 break;
-case 20:return 5;
+case 20:return '>';
+break;
+case 21:return 8;
+break;
+case 22:return 9;
+break;
+case 23:return 5;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[A-Z0-9_]+)/,/^(?:['][^']+['])/,/^(?:[<][^>]+[>])/,/^(?:,)/,/^(?:-)/,/^(?:silent\b)/,/^(?:parameter\b)/,/^(?:text\b)/,/^(?:except\b)/,/^(?:condition\b)/,/^(?:label\b)/,/^(?:details\b)/,/^(?:friendly\b)/,/^(?:\()/,/^(?:\))/,/^(?:<)/,/^(?:>)/,/^(?:and\b)/,/^(?:or\b)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[A-Z][A-Z0-9_]*)/,/^(?:[0-9]+)/,/^(?:['][^']+['])/,/^(?:,)/,/^(?:-)/,/^(?:silent\b)/,/^(?:parameter\b)/,/^(?:from\b)/,/^(?:text\b)/,/^(?:except\b)/,/^(?:condition\b)/,/^(?:label\b)/,/^(?:details\b)/,/^(?:material\b)/,/^(?:extra\b)/,/^(?:friendly\b)/,/^(?:\()/,/^(?:\))/,/^(?:<)/,/^(?:>)/,/^(?:and\b)/,/^(?:or\b)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],"inclusive":true}}
 });
 return lexer;
 })();
@@ -695,357 +698,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var grammar = require("./grammar");
-
-var uglifyHS = function uglifyHS(code) {
-  switch (code.length) {
-    case 0:
-      return '';
-    case 1:
-    case 2:
-      return 'chapter ' + code;
-    case 3:
-    case 4:
-      return 'heading ' + code;
-    case 5:
-    case 6:
-      return 'subheading ' + code.substr(0, 4) + '.' + code.substr(4);
-    default:
-      return 'HS' + code.substr(0, 4) + '.' + code.substr(4, 2) + '.' + code.substr(6);
-  }
-};
-
-function template(str, vars) {
-  var candidates = str.match(/\{\{[^\}]+\}\}/g);
-  if (candidates) {
-    candidates.forEach(function (candidate) {
-      var variable = candidate.substr(2, candidate.length - 4);
-      var value = false;
-      switch (variable) {
-        case 'subheading':
-          if (vars.hscode) {
-            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, '').substr(0, 6));
-          }
-          break;
-        case 'heading':
-          if (vars.hscode) {
-            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, '').substr(0, 4));
-          }
-          break;
-        case 'chapter':
-          if (vars.hscode) {
-            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, '').substr(0, 2));
-          }
-          break;
-      }
-      if (value) {
-        while (str.indexOf(candidate) !== -1) {
-          str = str.replace(candidate, value);
-        }
-      } else {
-        console.error("Variable " + variable + " could not be set.", str, vars);
-      }
-    });
-  }
-  return str;
-}
-
-var dumpHelper = function dumpHelper(tree) {
-  var output = '';
-
-  if (tree.or) {
-    output = dumpHelper(tree.or[0]) + " or " + dumpHelper(tree.or[1]);
-  }
-  if (tree.and) {
-    output = dumpHelper(tree.and[0]) + " and " + dumpHelper(tree.and[1]);
-  }
-
-  if (tree.code) {
-    output += tree.code;
-  }
-
-  if (tree.parameter) {
-    output += " parameter '" + tree.parameter + "'";
-  }
-
-  if (tree.text) {
-    output += " text '" + tree.text + "'";
-  }
-
-  if (tree.except) {
-    output += ' except ' + tree.except.map(function (excpt) {
-      var prefix = '';
-      if (excpt.materials !== 'materials') {
-        prefix = "<" + excpt.materials + ">";
-      }
-      if (excpt.code) {
-        return prefix + excpt.code;
-      } else {
-        return prefix + excpt.range.join('-');
-      }
-    }).join(',');
-  }
-
-  if (tree.condition) {
-    output += " condition '" + tree.condition + "'";
-  }
-
-  if (tree.label) {
-    output += " label '" + tree.label + "'";
-  }
-
-  if (tree.details) {
-    output += " details '" + tree.details + "'";
-  }
-
-  if (tree.silent) {
-    output = "silent (" + output + ")";
-  }
-
-  if (tree.friendly) {
-    Object.keys(tree.friendly).forEach(function (category) {
-      output = "(" + output + ") friendly " + category + " '" + tree.friendly[category] + "'";
-    });
-  }
-
-  return output;
-};
-
-var officialHelper = function officialHelper(tree) {
-  if (tree.silent) {
-    return '';
-  }
-
-  if (tree.or) {
-    return officialHelper(tree.or[0]) + ' or ' + officialHelper(tree.or[1]);
-  }
-  if (tree.and) {
-    return officialHelper(tree.and[0]) + ' and ' + officialHelper(tree.and[1]);
-  }
-
-  if (tree.text) {
-    return tree.text;
-  } else {
-    var output = '';
-    if (tree.code) {
-      if (/^\d+$/.test(tree.code)) {
-        output += ' materials of ' + uglifyHS(tree.code);
-      } else {
-        output += tree.code;
-      }
-    }
-    if (tree.parameter) {
-      output += '(' + tree.parameter + ')';
-    }
-
-    if (tree.except) {
-      output += ' except from ' + tree.except.map(function (excpt) {
-        if (excpt.code) {
-          return excpt.materials + " of " + uglifyHS(excpt.code);
-        } else {
-          return excpt.materials + " of " + uglifyHS(excpt.range[0]) + " through to " + uglifyHS(excpt.range[1]);
-        }
-      }).join(', ');
-    }
-
-    if (tree.condition) {
-      output += ' ' + tree.condition;
-    }
-    return output.replace(/[ ]+/g, ' ').replace(/(^[ ]|[ ]$)/, '');
-  }
-};
-
-var friendlyHelper = function friendlyHelper(tree, expanded, groups, category, settings, vars) {
-
-  if (tree.friendly && category in tree.friendly) {
-    return tree.friendly[category];
-  }
-
-  if (tree.silent) {
-    return '';
-  }
-
-  if (tree.or) {
-    return tree.or.map(function (rule) {
-      return friendlyHelper(rule, expanded, groups, category, settings, vars);
-    }).join(' or ');
-  }
-
-  if (tree.and) {
-    return tree.and.map(function (rule) {
-      return friendlyHelper(rule, expanded, groups, category, settings, vars);
-    }).join(' and ');
-  }
-
-  if (tree.code && tree.code in groups) {
-    if (groups[tree.code] != category) {
-      return '';
-    }
-  }
-
-  if (tree.text) {
-    return template(tree.text, vars);
-  } else if (settings.questionsById[tree.code].friendlyText) {
-    return template(settings.questionsById[tree.code].friendlyText, vars);
-  } else {
-    var output = '';
-    if (tree.code) {
-      if (/^\d+$/.test(tree.code)) {
-        output += ' materials of ' + uglifyHS(tree.code);
-      } else {
-        output += tree.code;
-      }
-    }
-    if (tree.parameter) {
-      output += '(' + tree.parameter + ')';
-    }
-
-    if (tree.code in expanded) {
-      if (tree.parameter) {
-        output = expanded[tree.code] + (settings.hideItemCode ? '' : ' - ' + output);
-      } else {
-        output = expanded[tree.code] + (settings.hideItemCode ? '' : ' (' + output + ')');
-      }
-    }
-
-    if (tree.except) {
-      output += ' except from ' + tree.except.map(function (excpt) {
-        if (excpt.code) {
-          return excpt.materials + " of " + uglifyHS(excpt.code);
-        } else {
-          return excpt.materials + " of " + uglifyHS(excpt.range[0]) + " through to " + uglifyHS(excpt.range[1]);
-        }
-      }).join(', ');
-    }
-
-    if (tree.condition) {
-      output += ' ' + tree.condition;
-    }
-    return output;
-  }
-};
-
-var codesHelper = function codesHelper(tree) {
-  var array = [];
-  if (tree.or) {
-    array = array.concat(codesHelper(tree.or[0]));
-    array = array.concat(codesHelper(tree.or[1]));
-  }
-  if (tree.and) {
-    array = array.concat(codesHelper(tree.and[0]));
-    array = array.concat(codesHelper(tree.and[1]));
-  }
-  if (tree.code) {
-    array.push(tree.code);
-  }
-  return array;
-};
-
-var conditionsHelper = function conditionsHelper(tree, arr) {
-  var array = arr || {};
-  if (tree.or) {
-    conditionsHelper(tree.or[0], array);
-    conditionsHelper(tree.or[1], array);
-  }
-  if (tree.and) {
-    conditionsHelper(tree.and[0], array);
-    conditionsHelper(tree.and[1], array);
-  }
-  if (tree.code && tree.except) {
-    if (!array[tree.code]) {
-      array[tree.code] = [];
-    }
-    tree.except.forEach(function (excpt) {
-      if (excpt.code) {
-        array[tree.code].push("provided that it is not a change from " + excpt.materials + " of " + uglifyHS(excpt.code));
-      } else {
-        array[tree.code].push("provided that it is not a change from " + excpt.materials + " of " + uglifyHS(excpt.range[0]) + " through to " + uglifyHS(excpt.range[1]));
-      }
-    });
-  }
-  if (tree.code && tree.condition) {
-    if (!array[tree.code]) {
-      array[tree.code] = [];
-    }
-    array[tree.code].push(tree.condition);
-  }
-  return array;
-};
-
-var labelsHelper = function labelsHelper(tree, arr) {
-  var array = arr || {};
-  if (tree.or) {
-    labelsHelper(tree.or[0], array);
-    labelsHelper(tree.or[1], array);
-  }
-  if (tree.and) {
-    labelsHelper(tree.and[0], array);
-    labelsHelper(tree.and[1], array);
-  }
-  if (tree.code && tree.label) {
-    array[tree.code] = tree.label;
-  }
-  return array;
-};
-
-var detailsHelper = function detailsHelper(tree, arr) {
-  var array = arr || {};
-  if (tree.or) {
-    detailsHelper(tree.or[0], array);
-    detailsHelper(tree.or[1], array);
-  }
-  if (tree.and) {
-    detailsHelper(tree.and[0], array);
-    detailsHelper(tree.and[1], array);
-  }
-  if (tree.code && tree.details) {
-    if (!array[tree.code]) {
-      array[tree.code] = [];
-    }
-    array[tree.code].push(tree.details);
-  }
-  return array;
-};
-
-var evaluateHelper = function evaluateHelper(tree, values, blacklist) {
-  if (tree.or) {
-    var a = evaluateHelper(tree.or[0], values, blacklist);
-    var b = evaluateHelper(tree.or[1], values, blacklist);
-    if (a === 'applicable' || b === 'applicable') {
-      return 'applicable';
-    }
-    if (a === 'unclear' || b === 'unclear') {
-      return 'unclear';
-    }
-    return 'inapplicable';
-  }
-  if (tree.and) {
-    var a = evaluateHelper(tree.and[0], values, blacklist);
-    var b = evaluateHelper(tree.and[1], values, blacklist);
-    if (a === 'applicable' && b === 'applicable') {
-      return 'applicable';
-    }
-    if (a === 'inapplicable') {
-      codesHelper(tree.and[1]).forEach(function (code) {
-        return blacklist[code] = true;
-      });
-      return 'inapplicable';
-    }
-    if (b === 'inapplicable') {
-      codesHelper(tree.and[0]).forEach(function (code) {
-        return blacklist[code] = true;
-      });
-      return 'inapplicable';
-    }
-    return 'unclear';
-  }
-  if (values[tree.code] === undefined) {
-    return 'unclear';
-  } else if (values[tree.code] === true) {
-    return 'applicable';
-  } else {
-    return 'inapplicable';
-  }
-};
+var uglifyHS = require('./uglifyHS');
+var template = require('./template');
 
 var PSR = function () {
   function PSR(tree, roo, vars) {
@@ -1054,45 +708,48 @@ var PSR = function () {
     this.tree = tree;
     this.roo = roo;
 
-    this.official = officialHelper(this.tree).replace(/\s+/g, ' ').replace(/(^[ ]|[ ]$)/, '').replace(/^(or|and| )*|(or|and| )*$/g, '');
+    this.official = formatOfficialHelper(this.tree);
 
-    var codes = codesHelper(this.tree);
+    var codes = findAllCodesHelper(this.tree);
+    var conditions = findAllConditionsHelper(codes);
+    var labels = findAllLabelsHelper(codes);
+    var details = findAllDetailsHelper(codes);
 
-    var conditions = conditionsHelper(this.tree);
-    var labels = labelsHelper(this.tree);
-    var details = detailsHelper(this.tree);
     var categoryById = {};
     var questionById = {};
 
     this.friendlyExpanded = {};
     this.friendlyGroupingException = {};
 
-    this.all = {};
     this.categories = [];
     this.questions = [];
     this.outcomes = {};
+
     var that = this;
 
     roo.forEach(function (item, index) {
       item.item = index;
       switch (item.type) {
         case 'category':
-          categoryById[item.itemIf] = item;
-          that.categories.push(item);
+          item.ruleFormattingStr = item.ruleFormattingStr || 'For {{hscode}}, the rule is {{friendlyRules}}.';
+          item.conditionsExtraDetailsStr = item.conditionsExtraDetailsStr || 'The addition of "provided that" or "except from" in the rule creates additional parameters that must be followed for the product to qualify under this rule. Please follow closely the wording of the rule in selecting "yes" or "no" for this question.';
+          item.details = item.details || '';
           item.questions = [];
           item.questionsById = {};
+          that.categories.push(categoryById[item.itemIf] = item);
           break;
         case 'question':
-          var included = false;
-          item.itemIf.split(',').forEach(function (itm) {
-            if (codes.indexOf(itm) !== -1) {
-              included = true;
-            }
-          });
+          var included = item.itemIf.split(',').filter(function (itm) {
+            return codes[itm] !== undefined;
+          }).length > 0;
           if (included) {
             that.questions.push(item);
-            categoryById[item.parentCategory].questions.push(item);
-            categoryById[item.parentCategory].questionsById[item.itemIf] = item;
+
+            var category = categoryById[item.parentCategory];
+
+            category.questions.push(item);
+            category.questionsById[item.itemIf] = item;
+
             if (item.itemIf in labels) {
               item.label = labels[item.itemIf];
             }
@@ -1104,13 +761,19 @@ var PSR = function () {
             if (item.itemIf in conditions) {
               item.conditions = conditions[item.itemIf];
               item.label = item.label.replace(/\?$/, " in accordance with the following rules?");
-              item.details.push('The addition of "provided that" or "except from" in the rule creates additional parameters that must be followed for the product to qualify under this rule. Please follow closely the wording of the rule in selecting "yes" or "no" for this question.');
+              item.details.push(category.conditionsExtraDetailsStr);
             }
             if (item.itemIf in details) {
               item.details.push(details[item.itemIf]);
             }
-            item.details = item.details.join('\n\n');
+
+            var code = codes[item.itemIf];
+
+            vars.parameter = code.parameter || undefined;
+
             item.label = template(item.label, vars);
+            item.details = item.details.join('\n\n');
+
             item.details = template(item.details.replace(/(^\s*|\s*$)/g, ''), vars);
           }
           if (item.parentCategory) {
@@ -1125,17 +788,21 @@ var PSR = function () {
           that.outcomes[item.itemIf] = item;
           break;
       }
-      that.all[item.item] = item;
     });
 
-    codes.filter(function (code) {
+    Object.keys(codes).filter(function (code) {
       return !(code in questionById);
     }).forEach(function (code) {
       throw new Error("Question related to " + code + " does not exist.");
     });
 
     this.categories.forEach(function (category) {
-      category.friendlyRules = friendlyHelper(that.tree, that.friendlyExpanded, that.friendlyGroupingException, category.itemIf, category, vars).replace(/\s+/g, ' ').replace(/(^[ ]|[ ]$)/, '').replace(/^(or|and| )*|(or|and| )*$/g, '');
+      vars.friendlyRules = friendlyHelper(that.tree, that.friendlyExpanded, that.friendlyGroupingException, category.itemIf, category, vars).replace(/\s+/g, ' ').replace(/(^[ ]|[ ]$)/g, '').replace(/^(or |and | )*|( or| and| )*$/g, '');
+      if (vars.friendlyRules) {
+        category.friendlyRules = vars.friendlyRules = template(vars.friendlyRules, vars);
+        category.details += (category.details ? '\n\n' : '') + category.ruleFormattingStr;
+        category.details = template(category.details, vars);
+      }
     });
     this.iterate();
   }
@@ -1181,54 +848,6 @@ var PSR = function () {
 
       return this.outcomes[outcome];
     }
-  }, {
-    key: "iterate2",
-    value: function iterate2(answers) {
-      var answers = answers || {};
-      var that = this;
-
-      var blacklist = {};
-      var values = {};
-      var outcome = 'unclear';
-      for (var q = 0; q < this.questions.length; q++) {
-        var question = this.questions[q];
-        question.visible = false;
-        if (outcome === 'unclear' && (answers[question.itemIf] === true || answers[question.itemIf] === false)) {
-          values[question.itemIf] = answers[question.itemIf] === true;
-          question.visible = true;
-          outcome = evaluateHelper(this.tree, values, blacklist);
-        }
-      }
-
-      outcome = 'unclear';
-
-      for (var q = 0; q < this.questions.length && outcome === 'unclear'; q++) {
-        var question = this.questions[q];
-        question.visible = true;
-        if (answers[question.itemIf] === true || answers[question.itemIf] === false) {
-          values[question.itemIf] = answers[question.itemIf] === true;
-          outcome = evaluateHelper(this.tree, values, blacklist);
-        } else {
-          break;
-        }
-      }
-
-      Object.keys(that.categories).map(function (cat) {
-        return that.categories[cat];
-      }).forEach(function (category) {
-        category.visible = false;
-        category.questions.forEach(function (question) {
-          category.visible = category.visible || question.visible;
-        });
-        if (category.visible) {
-          category.questions.forEach(function (question) {
-            question.visible = true;
-          });
-        }
-      });
-
-      return this.outcomes[outcome];
-    }
   }], [{
     key: "parse",
     value: function parse(text) {
@@ -1242,8 +861,344 @@ var PSR = function () {
   return PSR;
 }();
 
+function formatOfficialHelper(tree) {
+  if (tree.silent) {
+    return '';
+  }
+
+  if (tree.or) {
+    return tree.or.map(formatOfficialHelper).filter(function (i) {
+      return i;
+    }).join(' or ');
+  }
+  if (tree.and) {
+    return tree.and.map(formatOfficialHelper).filter(function (i) {
+      return i;
+    }).join(' or ');
+  }
+
+  if (tree.text) {
+    return tree.text;
+  } else {
+    var output = '';
+    if (tree.code) {
+      //if (/^\d+$/.test(tree.code))
+      //{
+      //  output += ' materials of ' + uglifyHS(tree.code);
+      //}
+      //else
+      //{
+      output += tree.code.replace(/_/g, '');
+      //}
+    }
+    if (tree.parameter) {
+      output += '(' + tree.parameter + ')';
+    }
+
+    if (tree.except) {
+      output += hslistToText(tree.except);
+    }
+
+    if (tree.condition) {
+      output += ' ' + tree.condition;
+    }
+    return output.replace(/[ ]+/g, ' ').replace(/(^[ ]|[ ]$)/, '');
+  }
+}
+
+function findAllCodesHelper(tree, output) {
+  output = output || {};
+  if (tree.or) {
+    tree.or.forEach(function (x) {
+      return findAllCodesHelper(x, output);
+    });
+  }
+  if (tree.and) {
+    tree.and.forEach(function (x) {
+      return findAllCodesHelper(x, output);
+    });
+  }
+  if (tree.code) {
+    output[tree.code] = tree;
+  }
+  return output;
+}
+
+function findAllLabelsHelper(codes) {
+  var output = {};
+  Object.keys(codes).map(function (c) {
+    return codes[c];
+  }).filter(function (tree) {
+    return tree.label;
+  }).forEach(function (tree) {
+    output[tree.code] = tree.label;
+  });
+  return output;
+}
+
+function findAllDetailsHelper(codes) {
+  var output = {};
+
+  Object.keys(codes).map(function (c) {
+    return codes[c];
+  }).filter(function (tree) {
+    return tree.details;
+  }).forEach(function (tree) {
+    output[tree.code] = output[tree.code] || [];
+    output[tree.code].push(tree.details);
+  });
+
+  return output;
+}
+
+function findAllConditionsHelper(codes) {
+  var output = {};
+
+  Object.keys(codes).map(function (c) {
+    return codes[c];
+  }).filter(function (tree) {
+    return tree.except || tree.condition || tree.from;
+  }).forEach(function (tree) {
+    var list = output[tree.code] || [];
+    if (tree.from) {
+      list.push("provided that it is a change from " + hslistToText(tree.from));
+    }
+    if (tree.except) {
+      list = list.concat(hslistToConditions(tree.except));
+    }
+    if (tree.condition) {
+      tree.condition.forEach(function (cond) {
+        return list.push(cond);
+      });
+    }
+    output[tree.code] = list;
+  });
+
+  return output;
+}
+
+function hslistToConditions(except) {
+  if (except.list) {
+    return hslistToConditions(except.list[0]).concat(hslistToConditions(except.list[1]));
+  }
+  return ["provided that it is not a change from " + hslistToText(except)];
+}
+
+function hslistToText(except, index, list) {
+  if (except.range) {
+    return except.range.map(hslistToText).join(' through to ');
+  } else if (except.list) {
+    return except.list.map(hslistToText).join(', ');
+  }
+
+  var printMaterial = true;
+
+  if (index && list && list[index - 1].material === except.material) {
+    printMaterial = false;
+  }
+
+  return (printMaterial ? (except.material || 'materials') + ' of ' : '') + ("" + uglifyHS(except.code) + (except.extra ? ' ' + except.extra : ''));
+}
+
+// ==========================
+
+function hslistToEncoded(except) {
+  if (except.range) {
+    return except.range.map(hslistToEncoded).join('-');
+  }
+
+  if (except.list) {
+    return except.list.map(hslistToEncoded).join(',');
+  }
+
+  var output = '' + except.code;
+
+  if (except.material) {
+    output += " material '" + except.material + "'";
+  }
+
+  if (except.extra) {
+    output += " extra '" + except.extra + "'";
+  }
+
+  return output;
+}
+
+var dumpHelper = function dumpHelper(tree) {
+  var output = '';
+
+  if (tree.or) {
+    output = dumpHelper(tree.or[0]) + " or " + dumpHelper(tree.or[1]);
+  }
+  if (tree.and) {
+    output = dumpHelper(tree.and[0]) + " and " + dumpHelper(tree.and[1]);
+  }
+
+  if (tree.code) {
+    output += tree.code;
+  }
+
+  if (tree.parameter) {
+    output += " parameter '" + tree.parameter + "'";
+  }
+
+  if (tree.from) {
+    output += ' from ' + hslistToEncoded(tree.from);
+  }
+
+  if (tree.text) {
+    output += " text '" + tree.text + "'";
+  }
+
+  if (tree.except) {
+    output += ' except ' + hslistToEncoded(tree.except);
+  }
+
+  if (tree.condition) {
+    tree.condition.forEach(function (condition) {
+      return output += " condition '" + condition + "'";
+    });
+  }
+
+  if (tree.label) {
+    output += " label '" + tree.label + "'";
+  }
+
+  if (tree.details) {
+    output += " details '" + tree.details + "'";
+  }
+
+  if (tree.silent) {
+    output = "silent (" + output + ")";
+  }
+
+  if (tree.friendly) {
+    Object.keys(tree.friendly).forEach(function (category) {
+      output = "(" + output + ") friendly " + category + " '" + tree.friendly[category] + "'";
+    });
+  }
+
+  return output;
+};
+
+var friendlyHelper = function friendlyHelper(tree, expanded, groups, category, settings, vars) {
+
+  if (tree.friendly && category in tree.friendly) {
+    return tree.friendly[category];
+  }
+
+  if (tree.silent) {
+    return '';
+  }
+
+  if (tree.or) {
+    return tree.or.map(function (rule) {
+      return friendlyHelper(rule, expanded, groups, category, settings, vars);
+    }).join(' or ');
+  }
+
+  if (tree.and) {
+    return tree.and.map(function (rule) {
+      return friendlyHelper(rule, expanded, groups, category, settings, vars);
+    }).join(' and ');
+  }
+
+  if (tree.code && tree.code in groups) {
+    if (groups[tree.code] !== category) {
+      return '';
+    }
+  }
+
+  if (tree.parameter) {
+    vars.parameter = tree.parameter;
+  }
+
+  if (tree.text) {
+    return template(tree.text, vars);
+  } else if (settings.questionsById[tree.code].friendlyText) {
+    return template(settings.questionsById[tree.code].friendlyText, vars);
+  } else {
+    var output = '';
+    if (tree.code) {
+      //if (/^\d+$/.test(tree.code))
+      //{
+      //  output += ' materials of ' + uglifyHS(tree.code);
+      //}
+      //else
+      //{
+      output += tree.code;
+      //}
+    }
+    if (tree.parameter) {
+      output += '(' + tree.parameter + ')';
+    }
+
+    if (tree.from) {
+      output += ' from ' + hslistToText(tree.from);
+    }
+
+    if (tree.code in expanded) {
+      if (tree.parameter) {
+        output = expanded[tree.code] + (settings.hideItemCode ? '' : ' - ' + output);
+      } else {
+        output = expanded[tree.code] + (settings.hideItemCode ? '' : ' (' + output + ')');
+      }
+    }
+
+    if (tree.except) {
+      output += ' except from ' + hslistToText(tree.except);
+    }
+
+    if (tree.condition) {
+      output += ' ' + tree.condition;
+    }
+    return template(output, vars);
+  }
+};
+
+function evaluateHelper(tree, values, blacklist) {
+  if (tree.or) {
+    var a = evaluateHelper(tree.or[0], values, blacklist);
+    var b = evaluateHelper(tree.or[1], values, blacklist);
+    if (a === 'applicable' || b === 'applicable') {
+      return 'applicable';
+    }
+    if (a === 'unclear' || b === 'unclear') {
+      return 'unclear';
+    }
+    return 'inapplicable';
+  }
+  if (tree.and) {
+    var a = evaluateHelper(tree.and[0], values, blacklist);
+    var b = evaluateHelper(tree.and[1], values, blacklist);
+    if (a === 'applicable' && b === 'applicable') {
+      return 'applicable';
+    }
+    if (a === 'inapplicable') {
+      Object.keys(findAllCodesHelper(tree.and[1])).forEach(function (code) {
+        return blacklist[code] = true;
+      });
+      return 'inapplicable';
+    }
+    if (b === 'inapplicable') {
+      Object.keys(findAllCodesHelper(tree.and[0])).forEach(function (code) {
+        return blacklist[code] = true;
+      });
+      return 'inapplicable';
+    }
+    return 'unclear';
+  }
+  if (values[tree.code] === undefined) {
+    return 'unclear';
+  } else if (values[tree.code] === true) {
+    return 'applicable';
+  } else {
+    return 'inapplicable';
+  }
+}
+
 module.exports = PSR;
-},{"./grammar":1}],3:[function(require,module,exports){
+},{"./grammar":1,"./template":4,"./uglifyHS":5}],3:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -1331,5 +1286,94 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
+},{}],4:[function(require,module,exports){
+/**
+ * @file Helper function
+ * 
+ * @author Nahid Akbar
+ * @year 2015
+ * @copyright National ICT Australia (NICTA). All rights reserved.
+ */
+
+"use strict";
+
+var uglifyHS = require('./uglifyHS');
+
+function template(str, vars) {
+  var candidates = str.match(/\{\{[^\}]+\}\}/g);
+  if (candidates) {
+    candidates.forEach(function (candidate) {
+      var variable = candidate.substr(2, candidate.length - 4);
+      var value = false;
+      switch (variable) {
+        case 'subheading':
+          if (vars.hscode) {
+            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, '').substr(0, 6));
+          }
+          break;
+        case 'heading':
+          if (vars.hscode) {
+            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, '').substr(0, 4));
+          }
+          break;
+        case 'chapter':
+          if (vars.hscode) {
+            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, '').substr(0, 2));
+          }
+          break;
+        case 'hscode':
+          if (vars.hscode) {
+            value = uglifyHS(vars.hscode.replace(/[^0-9]/g, ''));
+          }
+          break;
+        default:
+          if (typeof vars[variable] === 'string') {
+            value = vars[variable];
+          }
+          break;
+      }
+      if (value) {
+        while (str.indexOf(candidate) !== -1) {
+          str = str.replace(candidate, value);
+        }
+      } else {
+        console.error('Variable ' + variable + ' could not be set.', str, vars);
+      }
+    });
+  }
+  return str;
+}
+
+module.exports = template;
+},{"./uglifyHS":5}],5:[function(require,module,exports){
+/**
+ * @file Helper function
+ * 
+ * @author Nahid Akbar
+ * @year 2015
+ * @copyright National ICT Australia (NICTA). All rights reserved.
+ */
+
+"use strict";
+
+function uglifyHS(code) {
+  switch (code.length) {
+    case 0:
+      return '';
+    case 1:
+    case 2:
+      return 'chapter ' + code;
+    case 3:
+    case 4:
+      return 'heading ' + code;
+    case 5:
+    case 6:
+      return 'subheading ' + code.substr(0, 4) + '.' + code.substr(4);
+    default:
+      return 'HS' + code.substr(0, 4) + '.' + code.substr(4, 2) + '.' + code.substr(6);
+  }
+}
+
+module.exports = uglifyHS;
 },{}]},{},[2])(2)
 });
