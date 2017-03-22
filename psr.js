@@ -1094,12 +1094,16 @@ var friendlyHelper = function friendlyHelper(tree, expanded, groups, category, s
   if (tree.or) {
     return tree.or.map(function (rule) {
       return friendlyHelper(rule, expanded, groups, category, settings, vars);
+    }).filter(function (i) {
+      return i;
     }).join(' or ');
   }
 
   if (tree.and) {
     return tree.and.map(function (rule) {
       return friendlyHelper(rule, expanded, groups, category, settings, vars);
+    }).filter(function (i) {
+      return i;
     }).join(' and ');
   }
 

@@ -462,12 +462,14 @@ var friendlyHelper = function(tree, expanded, groups, category, settings, vars)
   if (tree.or)
   {
     return tree.or.map(rule => friendlyHelper(rule, expanded, groups, category, settings, vars))
+      .filter(i => i)
       .join(' or ');
   }
 
   if (tree.and)
   {
     return tree.and.map(rule => friendlyHelper(rule, expanded, groups, category, settings, vars))
+      .filter(i => i)
       .join(' and ');
   }
 
