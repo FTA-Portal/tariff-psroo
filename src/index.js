@@ -120,8 +120,7 @@ class PSR
     {
       vars.friendlyRules = friendlyHelper(that.tree, that.friendlyExpanded,
           that.friendlyGroupingException, category.itemIf, category, vars)
-        .replace(/\s+/g, ' ')
-        .replace(/(^[ ]|[ ]$)/g, '')
+        .replace(/(^\s+|\s+$)/g, '')
         .replace(/^(or |and | )*|( or| and| )*$/g, '');
       if (vars.friendlyRules)
       {

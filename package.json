@@ -1,6 +1,6 @@
 {
   "name": "tariff-psroo",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Library for representing and reasoning about product specific rules of origin.",
   "main": "index.js",
   "directories": {},
