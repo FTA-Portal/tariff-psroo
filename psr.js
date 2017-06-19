@@ -797,7 +797,7 @@ var PSR = function () {
     });
 
     this.categories.forEach(function (category) {
-      vars.friendlyRules = friendlyHelper(that.tree, that.friendlyExpanded, that.friendlyGroupingException, category.itemIf, category, vars).replace(/\s+/g, ' ').replace(/(^[ ]|[ ]$)/g, '').replace(/^(or |and | )*|( or| and| )*$/g, '');
+      vars.friendlyRules = friendlyHelper(that.tree, that.friendlyExpanded, that.friendlyGroupingException, category.itemIf, category, vars).replace(/(^\s+|\s+$)/g, '').replace(/^(or |and | )*|( or| and| )*$/g, '');
       if (vars.friendlyRules) {
         category.friendlyRules = vars.friendlyRules = template(vars.friendlyRules, vars);
         category.details += (category.details ? '\n\n' : '') + category.ruleFormattingStr;

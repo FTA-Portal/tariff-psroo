@@ -1,12 +1,12 @@
 {
   "name": "tariff-psroo",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Library for representing and reasoning about product specific rules of origin.",
   "main": "index.js",
   "directories": {},
   "scripts": {
     "test": "node test.js",
-    "workDev": "babel --presets es2015 src/ --watch --out-dir .",
+    "workDev": "babel --presets latest src/ --watch --out-dir .",
     "workTest": "nodemon test.js",
     "browserify": "browserify -e index.js -s TariffPSR -o psr.js",
     "grammar": "jison src/grammar.jison -o .grammar.js -m commonjs && grep -v token_stack .grammar.js | grep -v source > grammar.js"
@@ -30,7 +30,7 @@
   ],
   "devDependencies": {
     "babel-cli": "^6.0.14",
-    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-latest": "latest",
     "browserify": "^6.1.2",
     "chalk": "^1.1.3",
     "jison": "*"
