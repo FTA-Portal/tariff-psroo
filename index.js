@@ -133,6 +133,7 @@ var PSR = function () {
       var answers = answers || {};
       var that = this;
 
+      var whiltelist = {};
       var blacklist = {};
       var values = {};
       var outcome = 'unclear';
@@ -145,7 +146,7 @@ var PSR = function () {
           question.visible = true;
           if (answers[question.itemIf] === true || answers[question.itemIf] === false) {
             values[question.itemIf] = answers[question.itemIf] === true;
-            outcome = evaluateHelper(this.tree, values, blacklist);
+            outcome = evaluateHelper(this.tree, values, blacklist, whiltelist);
           } else {
             break;
           }
@@ -475,10 +476,10 @@ var friendlyHelper = function friendlyHelper(tree, expanded, groups, category, s
   }
 };
 
-function evaluateHelper(tree, values, blacklist) {
+function evaluateHelper(tree, values, blacklist, whitelist) {
   if (tree.or) {
-    var a = evaluateHelper(tree.or[0], values, blacklist);
-    var b = evaluateHelper(tree.or[1], values, blacklist);
+    var a = evaluateHelper(tree.or[0], values, blacklist, whitelist);
+    var b = evaluateHelper(tree.or[1], values, blacklist, whitelist);
     if (a === 'applicable' || b === 'applicable') {
       return 'applicable';
     }
@@ -488,22 +489,36 @@ function evaluateHelper(tree, values, blacklist) {
     return 'inapplicable';
   }
   if (tree.and) {
-    var a = evaluateHelper(tree.and[0], values, blacklist);
-    var b = evaluateHelper(tree.and[1], values, blacklist);
+    var a = evaluateHelper(tree.and[0], values, blacklist, whitelist);
+    var b = evaluateHelper(tree.and[1], values, blacklist, whitelist);
     if (a === 'applicable' && b === 'applicable') {
       return 'applicable';
     }
     if (a === 'inapplicable') {
       Object.keys(findAllCodesHelper(tree.and[1])).forEach(function (code) {
-        return blacklist[code] = true;
+        if (!whitelist[code]) {
+          blacklist[code] = !whitelist[code];
+        }
       });
       return 'inapplicable';
+    } else {
+      Object.keys(findAllCodesHelper(tree)).forEach(function (code) {
+        delete blacklist[code];
+        whitelist[code] = true;
+      });
     }
     if (b === 'inapplicable') {
       Object.keys(findAllCodesHelper(tree.and[0])).forEach(function (code) {
-        return blacklist[code] = true;
+        if (!whitelist[code]) {
+          blacklist[code] = true;
+        }
       });
       return 'inapplicable';
+    } else {
+      Object.keys(findAllCodesHelper(tree)).forEach(function (code) {
+        delete blacklist[code];
+        whitelist[code] = true;
+      });
     }
     return 'unclear';
   }
