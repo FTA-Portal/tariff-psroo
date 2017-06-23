@@ -133,7 +133,6 @@ var PSR = function () {
       var answers = answers || {};
       var that = this;
 
-      var whiltelist = {};
       var blacklist = {};
       var values = {};
       var outcome = 'unclear';
@@ -146,7 +145,7 @@ var PSR = function () {
           question.visible = true;
           if (answers[question.itemIf] === true || answers[question.itemIf] === false) {
             values[question.itemIf] = answers[question.itemIf] === true;
-            outcome = evaluateHelper(this.tree, values, blacklist, whiltelist);
+            outcome = evaluateHelper(this.tree, values, blacklist, {});
           } else {
             break;
           }
