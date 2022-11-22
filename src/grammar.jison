@@ -4,7 +4,7 @@
 %%
 \s+                         /* skip whitespace */
 [A-Z][A-Z0-9_]*             return 'CODE';
-[0-9]+                      return 'HS';
+[0-9][0-9.]*                return 'HS';
 ['][^']+[']                 return 'TEXT';
 ","                         return ',';
 "-"                         return '-';
@@ -86,7 +86,7 @@ hslist
     | hslist '-' hslist
         {$$ = {range: [$1, $3]};}
     | HS
-        {$$ = {code: $1};}
+        {$$ = {code: $1.replace(/\./g, '')};}
     | hslist 'material' TEXT
         {$$ = $1; $$[$2] = $3.substr(1, $3.length - 2);}
     | hslist 'extra' TEXT

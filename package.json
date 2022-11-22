@@ -1,6 +1,6 @@
 {
-  "name": "tariff-psroo",
-  "version": "0.1.9",
+  "name": "@thinkmill/tariff-psroo",
+  "version": "0.2.1",
   "description": "Library for representing and reasoning about product specific rules of origin.",
   "main": "index.js",
   "directories": {},
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:AusFTAs/tariff-psroo.git"
+    "url": "git@github.com:FTA-Portal/tariff-psroo.git"
   },
   "keywords": [
     "tariff",
